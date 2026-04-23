@@ -6,7 +6,7 @@ class Solution(object):
         :type k: int
         :rtype: int
         """
-        queue=deque()
+        queue=deque()#type:ignore
         for i in range(len(tickets)):
             queue.append(i)
         d={}
