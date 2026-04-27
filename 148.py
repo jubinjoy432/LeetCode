@@ -1,0 +1,63 @@
+#Sort List
+class Solution:
+    def sortList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        s=[]
+        temp=head
+        while temp:
+            s.append(temp.val)
+            temp=temp.next
+        s.sort()
+        temp=head
+        i=0
+        while temp:
+            temp.val=s[i]
+            i+=1
+            temp=temp.next
+        return head
+
+#######################OR#################################
+
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution(object):
+    def sortList(self, head):
+        """
+        :type head: Optional[ListNode]
+        :rtype: Optional[ListNode]
+        """
+        if not head or not head.next:
+            return head
+        slow,fast=head,head.next
+        while fast and fast.next:
+            slow=slow.next
+            fast=fast.next.next
+        mid=slow.next
+        slow.next=None
+        left=self.sortList(head)
+        right=self.sortList(mid)
+
+        return self.merge(left,right)
+    
+    def merge(self,l1,l2):
+        dummy=ListNode(0)
+        tail=dummy
+        while l1 and l2:
+            if l1.val<l2.val:
+                tail.next=l1
+                l1=l1.next
+            else:
+                tail.next=l2
+                l2=l2.next
+            tail=tail.next
+        while l1:
+            tail.next=l1
+            l1=l1.next
+        while l2:
+            tail.next=l2
+            l2=l2.next
+        return dummy.next
+
+                
