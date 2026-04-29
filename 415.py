@@ -1,4 +1,3 @@
-#Add Srings
 class Solution(object):
     def addStrings(self, num1, num2):
         c=0
@@ -24,18 +23,6 @@ class Solution(object):
                 sum=str(a)+sum
             l1-=1
             l2-=1
-        if l1>=0:
-            while l1>=0:
-                sum=num1[l1]+sum
-                l1-=1
-        if l2>=0:
-            while l2>=0:
-                sum=num2[l2]+sum
-                l2-=1
         if c==1:
             sum=str(c)+sum
         return sum
-
-
-                
-        
